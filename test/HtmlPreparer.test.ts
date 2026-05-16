@@ -135,4 +135,21 @@ describe('HtmlPreparer.prepare', () => {
 
     });
 
+    describe('HtmlPreparer.prepare truncates at max length on a tag boundary', () => {
+
+        it('truncates long HTML at a tag boundary', () => {
+            const html = '<div>'.repeat(12_100);
+            const prepared = HtmlPreparer.prepare(html);
+            expect(prepared.length).toBeLessThan(html.length);
+            expect(prepared.endsWith('>') || prepared.endsWith('truncated -->')).toBe(true);
+        });
+
+        it('does not truncate if under max length', () => {
+            const html = '<div>Short content</div>';
+            const prepared = HtmlPreparer.prepare(html);
+            expect(prepared).toBe('<div>Short content</div>');
+        });
+
+    });
+
 });

@@ -12,10 +12,10 @@ import { LocatorKind } from "./LocatorKind";
  * (if there are buttons with the accessible names 'Cancel' and 'Submit?').
  */
 export interface BrokenLocator {
-    kind: LocatorKind;
-    value: string;
-    description: string;
-    targetName?: string;
-    candidates?: readonly string[];
+    kind: LocatorKind; // e.g. 'role', 'text', 'id', etc.
+    value: string; // e.g. getByRole('button', { name: 'Submit' }) -> 'button'
+    description: string; // e.g. "getByRole('button', { name: 'Submit' })"
+    targetName?: string; // e.g. getByRole('button', { name: 'Submit' }) -> 'Submit'
+    candidates?: readonly string[]; // What was actually on the page
     humanHint?: string;
 }

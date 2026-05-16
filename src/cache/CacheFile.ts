@@ -2,7 +2,7 @@
 // all possible alternatives for a particular locator 
 type Suggestions = string[];
 
-// Resolve using playwrights getBy factory methods
+// Resolve using playwrights getByXXX factory methods
 export interface CacheFactories {
     role?: Suggestions;
     placeholder?: Suggestions;
